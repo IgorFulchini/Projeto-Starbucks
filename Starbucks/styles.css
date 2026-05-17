@@ -1,0 +1,319 @@
+*, *::before, *::after {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-bg:      #2F4F4F;
+  --cor-accent:  #017143;
+  --cor-accent2: #04c977;
+  --cor-branco:  #ffffff;
+  --transicao:   0.5s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Navbar ─────────────────────────────────── */
+.navbar {
+  background-color: rgba(47, 79, 79, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 12px 36px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 700px;
+  width: calc(100% - 40px);
+  z-index: 100;
+  animation: slideDown 0.6s ease both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: var(--cor-branco);
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  display: block;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--cor-accent2);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Barrinha verde embaixo no hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--cor-accent2);
+  border-radius: 2px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 60%;
+  left: 20%;
+}
+
+/* ── Círculo decorativo ─────────────────────── */
+.circulo {
+  width: 100%;
+  height: 100%;
+  background: var(--cor-accent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  clip-path: circle(600px at right 820px);
+  z-index: 0;
+  transition: background var(--transicao);
+  pointer-events: none;
+}
+
+/* ── Container principal ────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  padding: 110px 100px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 90px;
+  margin-bottom: 48px;
+  animation: fadeIn 0.8s ease both 0.2s;
+}
+
+/* ── Hero ───────────────────────────────────── */
+.caixa-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex: 1;
+}
+
+/* ── Textos ─────────────────────────────────── */
+.caixa-textos {
+  max-width: 580px;
+  animation: fadeInLeft 0.8s ease both 0.3s;
+}
+
+.caixa-textos h2 {
+  color: var(--cor-branco);
+  font-size: clamp(42px, 4.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.caixa-textos h3 {
+  color: var(--cor-branco);
+  font-size: clamp(42px, 4.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.texto-starbuck {
+  color: var(--cor-accent);
+  font-weight: 900;
+  font-size: clamp(56px, 6vw, 86px);
+  transition: color var(--transicao);
+  display: inline-block;
+}
+
+.caixa-textos p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 18px;
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+.btn-explorar {
+  display: inline-block;
+  background-color: var(--cor-accent);
+  color: var(--cor-branco);
+  border-radius: 50px;
+  padding: 18px 42px;
+  border: none;
+  cursor: pointer;
+  margin-top: 36px;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(1, 113, 67, 0.4);
+  transition: background var(--transicao), transform 0.2s ease, box-shadow var(--transicao);
+  letter-spacing: 0.5px;
+}
+
+.btn-explorar:hover {
+  background-color: var(--cor-accent2);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(4, 201, 119, 0.45);
+}
+
+.btn-explorar:active {
+  transform: translateY(0);
+}
+
+/* ── Imagem do copo ─────────────────────────── */
+.caixa-imagem {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease both 0.4s;
+}
+
+.copo {
+  width: 460px;
+  max-width: 42vw;
+  transition: transform var(--transicao), filter var(--transicao), opacity 0.3s ease;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+}
+
+.copo:hover {
+  cursor: pointer;
+  transform: scale(1.05) translateY(-10px);
+  filter: drop-shadow(0 36px 60px rgba(0, 0, 0, 0.55));
+}
+
+/* ── Menu de seleção ────────────────────────── */
+.caixa-menu {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  gap: 56px;
+  animation: fadeIn 0.8s ease both 0.6s;
+}
+
+.botao-menu {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, outline 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  outline: 3px solid transparent;
+  outline-offset: 4px;
+}
+
+.botao-menu:hover {
+  transform: translateY(-18px) scale(1.12);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Destaque no botão ativo — só borda branca, sem afetar o copo */
+.botao-menu.ativo {
+  outline: 3px solid var(--cor-branco);
+}
+
+/* ── Animações ──────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsivo ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .container {
+    padding: 110px 60px 60px;
+  }
+  .copo {
+    width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 32px 60px;
+    min-height: auto;
+  }
+
+  .caixa-conteudo {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .copo {
+    width: 280px;
+    max-width: 70vw;
+  }
+
+  .caixa-textos {
+    max-width: 100%;
+  }
+
+  .caixa-textos p {
+    margin: 0 auto;
+  }
+
+  .circulo {
+    clip-path: circle(340px at 50% -80px);
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links a {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+
+  .caixa-menu {
+    gap: 32px;
+  }
+}
